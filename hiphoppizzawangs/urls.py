@@ -13,9 +13,22 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+from django.conf.urls import include
 from django.contrib import admin
 from django.urls import path
+from rest_framework import routers
+from hiphoppizzawangsapi.views import ItemView, OrderItemView, OrderView, check_user, register_user
+
+router = routers.DefaultRouter(trailing_slash=False)
+router.register(r"orders", OrderView, 'order')
+router.register(r"items", ItemView, 'item')
+router.register(r"order_items", OrderItemView, 'order_item')
+
 
 urlpatterns = [
+    path('', include(router.urls)),
     path('admin/', admin.site.urls),
+    path('checkuser', check_user),
+    path('register', register_user)
 ]

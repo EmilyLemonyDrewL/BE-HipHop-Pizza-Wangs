@@ -1,0 +1,9 @@
+[
+  {
+      "model": "hiphoppizzawangsapi.user",
+      "pk": 1,
+      "fields": {
+          "name": "user1"
+      }
+  }
+]
