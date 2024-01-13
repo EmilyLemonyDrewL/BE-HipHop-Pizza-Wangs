@@ -1,0 +1,62 @@
+[
+  {
+    "model": "hiphoppizzawangsapi.order",
+    "pk": "1",
+    "fields": {
+      "uid": 1,
+      "customer_name": "Matt",
+      "customer_phone": 1111111,
+      "customer_email": "heyitsmatt@gmail.com",
+      "order_type": "Call-In",
+      "status": "Closed",
+      "payment_type": "Credit/Debit",
+      "date_of_order_closure": "2024-01-12",
+      "tip_amount": 6.00
+    }
+  },
+  {
+    "model": "hiphoppizzawangsapi.order",
+    "pk": "2",
+    "fields": {
+      "uid": 1,
+      "customer_name": "Sierra",
+      "customer_phone": 2222222,
+      "customer_email": "callmesierra@aol.com",
+      "order_type": "Walk-In",
+      "status": "Open",
+      "payment_type": "Cash",
+      "date_of_order_closure": "2024-01-10",
+      "tip_amount": 5.00
+    }
+  },
+  {
+    "model": "hiphoppizzawangsapi.order",
+    "pk": "3",
+    "fields": {
+      "uid": 1,
+      "customer_name": "Lizzy M",
+      "customer_phone": 3333333,
+      "customer_email": "lmcapline@gmail.com",
+      "order_type": "Call-In",
+      "status": "Closed",
+      "payment_type": "Cash",
+      "date_of_order_closure": "2024-01-12",
+      "tip_amount": 10.00
+    }
+  },
+  {
+    "model": "hiphoppizzawangsapi.order",
+    "pk": "4",
+    "fields": {
+      "uid": 1,
+      "customer_name": "Lemony",
+      "customer_phone": 4444444,
+      "customer_email": "Lemony@aol.com",
+      "order_type": "Call-In",
+      "status": "Open",
+      "payment_type": "Credit/Debit",
+      "date_of_order_closure": "2024-01-10",
+      "tip_amount": 8.00
+    }
+  }
+]

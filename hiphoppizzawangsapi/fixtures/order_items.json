@@ -1,0 +1,74 @@
+[
+  {
+    "model": "hiphoppizzawangsapi.orderitem",
+    "pk": 1,
+    "fields": {
+      "order": 1,
+      "item": 1,
+      "quantity": 2
+    }
+  },
+  {
+    "model": "hiphoppizzawangsapi.orderitem",
+    "pk": 2,
+    "fields": {
+      "order": 1,
+      "item": 4,
+      "quantity": 1
+    }
+  },
+  {
+    "model": "hiphoppizzawangsapi.orderitem",
+    "pk": 3,
+    "fields": {
+      "order": 1,
+      "item": 6,
+      "quantity": 3
+    }
+  },
+  {
+    "model": "hiphoppizzawangsapi.orderitem",
+    "pk": 4,
+    "fields": {
+      "order": 2,
+      "item": 3,
+      "quantity": 3
+    }
+  },
+  {
+    "model": "hiphoppizzawangsapi.orderitem",
+    "pk": 5,
+    "fields": {
+      "order": 2,
+      "item": 6,
+      "quantity": 1
+    }
+  },
+  {
+    "model": "hiphoppizzawangsapi.orderitem",
+    "pk": 6,
+    "fields": {
+      "order": 3,
+      "item": 2,
+      "quantity": 2
+    }
+  },
+  {
+    "model": "hiphoppizzawangsapi.orderitem",
+    "pk": 7,
+    "fields": {
+      "order": 4,
+      "item": 1,
+      "quantity": 1
+    }
+  },
+  {
+    "model": "hiphoppizzawangsapi.orderitem",
+    "pk": 8,
+    "fields": {
+      "order": 4,
+      "item": 3,
+      "quantity": 1
+    }
+  }
+]

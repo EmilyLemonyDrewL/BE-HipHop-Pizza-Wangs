@@ -1,0 +1,56 @@
+[
+  {
+    "model": "hiphoppizzawangsapi.item",
+    "pk": 1,
+    "fields": {
+      "name": "Salt-N-Pepperoni",
+      "price": 14.00,
+      "description": "The best pizza for pepporoni lovers. Classic marinara, extra cheese, and loaded with pepperonis."
+    }
+  },
+  {
+    "model": "hiphoppizzawangsapi.item",
+    "pk": 2,
+    "fields": {
+      "name": "Don tOLIVEr",
+      "price": 16.00,
+      "description": "Hand-tossed pizza with pesto sauce, topped with artichokes, olives, sundried tomatoes, and caramelized onions."
+    }
+  },
+  {
+    "model": "hiphoppizzawangsapi.item",
+    "pk": 3,
+    "fields": {
+      "name": "MisSupreme Elliot",
+      "price": 12.80,
+      "description": "Supreme pizza covered in all of the classic toppings."
+    }
+  },
+  {
+    "model": "hiphoppizzawangsapi.item",
+    "pk": 4,
+    "fields": {
+      "name": "Veggie Watts",
+      "price": 16.00,
+      "description": "Our completely vegan pizza"
+    }
+  },
+  {
+    "model": "hiphoppizzawangsapi.item",
+    "pk": 5,
+    "fields": {
+      "name": "Yum DMC",
+      "price": 9.00,
+      "description": "12 wings covered in the sweet but spicy honeyfire sauce."
+    }
+  },
+  {
+    "model": "hiphoppizzawangsapi.item",
+    "pk": 6,
+    "fields": {
+      "name": "Fountain drink",
+      "price": 1.50,
+      "description": " "
+    }
+  }
+]
