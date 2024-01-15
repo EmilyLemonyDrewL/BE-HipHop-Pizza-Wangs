@@ -3,7 +3,7 @@
     "model": "hiphoppizzawangsapi.order",
     "pk": "1",
     "fields": {
-      "uid": 1,
+      "cashier": 2,
       "customer_name": "Matt",
       "customer_phone": 1111111,
       "customer_email": "heyitsmatt@gmail.com",
@@ -18,7 +18,7 @@
     "model": "hiphoppizzawangsapi.order",
     "pk": "2",
     "fields": {
-      "uid": 1,
+      "cashier": 2,
       "customer_name": "Sierra",
       "customer_phone": 2222222,
       "customer_email": "callmesierra@aol.com",
@@ -33,7 +33,7 @@
     "model": "hiphoppizzawangsapi.order",
     "pk": "3",
     "fields": {
-      "uid": 1,
+      "cashier": 2,
       "customer_name": "Lizzy M",
       "customer_phone": 3333333,
       "customer_email": "lmcapline@gmail.com",
@@ -48,7 +48,7 @@
     "model": "hiphoppizzawangsapi.order",
     "pk": "4",
     "fields": {
-      "uid": 1,
+      "cashier": 2,
       "customer_name": "Lemony",
       "customer_phone": 4444444,
       "customer_email": "Lemony@aol.com",

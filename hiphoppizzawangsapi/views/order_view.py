@@ -10,7 +10,7 @@ class OrderView(ViewSet):
         try:
             order = Order.objects.get(pk=pk)
             serializer = OrderSerializer(order)
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         except Order.DoesNotExist as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
 
@@ -19,16 +19,16 @@ class OrderView(ViewSet):
             orders = Order.objects.all()
 
             serializer = OrderSerializer(orders, many=True)
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         except Order.DoesNotExist as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
 
 
     def create(self, request):
-        uid = User.objects.get(uid=request.data["uid"])
+        cashier = User.objects.get(uid=request.data["cashierId"])
 
         order = Order.objects.create(
-          uid = uid,
+          cashier=cashier,
           customer_name = request.data["customer_name"],
           customer_phone = request.data["customer_phone"],
           customer_email = request.data["customer_email"],
@@ -41,7 +41,7 @@ class OrderView(ViewSet):
 
         order.save()
         serializer = OrderSerializer(order)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def update(self, request, pk):
         order = Order.objects.get(pk=pk)
@@ -54,8 +54,8 @@ class OrderView(ViewSet):
         order.date_of_order_closure = request.data["date_of_order_closure"]
         order.tip_amount = request.data["tip_amount"]
 
-        uid = User.objects.get(uid=request.data["uid"])
-        order.uid = uid
+        cashier = User.objects.get(uid=request.data["cashierId"])
+        order.cashier = cashier
         order.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
@@ -69,7 +69,7 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = (
-          'uid', 
+          'cashier', 
           'customer_name', 
           'customer_phone', 
           'customer_email', 

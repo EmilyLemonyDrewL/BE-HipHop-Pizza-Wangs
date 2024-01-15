@@ -24,3 +24,4 @@ class ItemSerializer(serializers.ModelSerializer):
         model = Item
         fields = ('id', 'name', 'price', 'description')
         depth = 1
+    
