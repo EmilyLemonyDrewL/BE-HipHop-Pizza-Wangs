@@ -4,6 +4,6 @@ from .item import Item
 
 class OrderItem(models.Model):
 
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_items')
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='item_orders')
     quantity = models.IntegerField()

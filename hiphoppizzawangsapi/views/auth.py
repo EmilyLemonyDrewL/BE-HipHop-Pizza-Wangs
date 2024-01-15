@@ -6,13 +6,13 @@ from hiphoppizzawangsapi.models import User
 def check_user(request):
 
     uid = request.data['uid']
-    user = User.objects.filter(uid=uid).first()
+    cashier = User.objects.filter(uid=uid).first()
 
-    if user is not None:
+    if cashier is not None:
         data = {
-          'id': user.id,
-          'uid': user.uid,
-          'name': user.name
+          'id': cashier.id,
+          'uid': cashier.uid,
+          'name': cashier.name
         }
         return Response(data)
     else:
@@ -21,14 +21,14 @@ def check_user(request):
 
 @api_view(['POST'])
 def register_user(request):
-    user = User.objects.create(
+    cashier = User.objects.create(
       uid=request.data['uid'],
       name=request.data['name']
     )
 
     data = {
-      'id': user.id,
-      'uid': user.uid,
-      'name': user.name
+      'id': cashier.id,
+      'uid': cashier.uid,
+      'name': cashier.name
     }
     return Response(data)

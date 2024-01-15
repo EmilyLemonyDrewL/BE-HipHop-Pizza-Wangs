@@ -3,7 +3,7 @@ from .user import User
 
 class Order(models.Model):
 
-    uid = models.ForeignKey(User, on_delete=models.CASCADE)
+    cashier = models.ForeignKey(User, on_delete=models.CASCADE)
     customer_name = models.CharField(max_length=50)
     customer_phone = models.IntegerField()
     customer_email = models.EmailField(max_length=50)
