@@ -15,23 +15,11 @@ class OrderItemView(ViewSet):
 
     def list(self, request):
         """GET all order items"""
-        items = OrderItem.objects.all()
-        serializer = OrderItemSerializer(items, many=True)
+        order_items = OrderItem.objects.all()
+        serializer = OrderItemSerializer(order_items, many=True)
         response_data = serializer.data
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    def create(self, request):
-        order_id = request.data["orderId"]
-        item_id = request.data["itemId"]
-
-        order_item = OrderItem.objects.create(
-            order_id=order_id,
-            item_id=item_id,
-            quantity=request.data["quantity"]
-        )
-
-        serializer = OrderItemSerializer(order_item)
-        return Response(serializer.data)
 
     def destroy(self, request, pk):
         order_item = OrderItem.objects.get(pk=pk)
