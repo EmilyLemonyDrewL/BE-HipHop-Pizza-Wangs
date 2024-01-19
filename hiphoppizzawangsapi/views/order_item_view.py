@@ -19,6 +19,32 @@ class OrderItemView(ViewSet):
         serializer = OrderItemSerializer(order_items, many=True)
         response_data = serializer.data
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    def create(self, request):
+        order = Order.objects.get(pk=request.data['order'])
+        item = Item.objects.get(pk=request.data['item'])
+        
+        order_item = OrderItem.objects.create(
+            order=order,
+            item=item,
+            quantity=request.data['quantity']
+        )
+        
+        serializer = OrderItemSerializer(order_item)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+    def update(self, request, pk):
+        order_item = OrderItem.objects.get(pk=pk)
+        order = Order.objects.get(pk=request.data['orderId'])
+        item = Item.objects.get(pk=request.data['itemId'])
+        
+        order_item.order = order
+        order_item.item = item
+        order_item.quantity = request.data['quantity']
+        
+        order_item.save()
+        serializer = OrderItemSerializer(order_item)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
     def destroy(self, request, pk):
