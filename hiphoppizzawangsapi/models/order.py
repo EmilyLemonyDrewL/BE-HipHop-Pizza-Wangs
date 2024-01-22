@@ -12,3 +12,4 @@ class Order(models.Model):
     payment_type = models.CharField(max_length=50)
     date_of_order_closure = models.DateField(auto_now=False)
     tip_amount = models.IntegerField()
+    
