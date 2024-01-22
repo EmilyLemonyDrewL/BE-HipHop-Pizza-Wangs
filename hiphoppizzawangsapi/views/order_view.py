@@ -26,7 +26,12 @@ class OrderView(ViewSet):
 
     def list(self, request):
         try:
-            orders = Order.objects.all()
+            status_param = request.query_params.get('status')
+            
+            if status_param and status_param.lower() == 'closed':
+                orders = Order.objects.filter(status='Closed')
+            else:
+                orders = Order.objects.all()
 
             serializer = OrderSerializer(orders, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
