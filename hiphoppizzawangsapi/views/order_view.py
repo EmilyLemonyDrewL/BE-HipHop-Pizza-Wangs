@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import serializers, status
 from hiphoppizzawangsapi.models import User, Order, Item, OrderItem
 from rest_framework.decorators import action
+from django.db.models import Sum, F
 
 class OrderView(ViewSet):
 
@@ -105,6 +106,54 @@ class OrderView(ViewSet):
             order=order
         )
         return Response({'message': 'Menu item added'}, status=status.HTTP_201_CREATED)
+    
+    
+    @action(methods=['get'], detail=False, url_path='total-revenue')
+    def total_revenue(self, request):
+        try:
+            # create filter to get closed orders only
+            closed_orders = Order.objects.filter(status='Closed')
+
+            total_revenue_per_order = {}
+
+            for order in closed_orders:
+                order_items = OrderItem.objects.filter(order=order)
+                total_order_price = 0
+
+                # calculate prices based on order items and quantity of each
+                for order_item in order_items:
+                    total_order_price += order_item.item.price * order_item.quantity
+
+                total_revenue_per_order[order.id] = total_order_price
+
+            return Response({'total_revenue_per_order': total_revenue_per_order}, status=status.HTTP_200_OK)
+
+        except Order.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
+        
+    @action(methods=['get'], detail=False, url_path='total-revenue-with-tip')
+    def total_revenue_with_tip(self, request):
+        try:
+        
+            closed_orders = Order.objects.filter(status='Closed')
+
+            total_revenue_per_order_with_tip = {}
+            for order in closed_orders:
+                order_items = OrderItem.objects.filter(order=order)
+                total_order_price_with_tip = 0
+
+                for order_item in order_items:
+                    total_order_price_with_tip += order_item.item.price * order_item.quantity
+
+                # calculate tip amount
+                total_order_price_with_tip += order.tip_amount
+
+                total_revenue_per_order_with_tip[order.id] = total_order_price_with_tip
+
+            return Response({'total_revenue_per_order_with_tip': total_revenue_per_order_with_tip}, status=status.HTTP_200_OK)
+
+        except Order.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
         
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
@@ -128,6 +177,6 @@ class OrderSerializer(serializers.ModelSerializer):
           'payment_type', 
           'date_of_order_closure', 
           'tip_amount',
-          'items'
+          'items',
           )
         depth = 1
